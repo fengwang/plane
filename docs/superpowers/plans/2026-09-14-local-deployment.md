@@ -12,7 +12,7 @@
 - [x] Replace `docker-compose-local.yml` with production services, health checks, migration gating, persistent bind mounts and RustFS. Add a local Caddy config and root environment template; exclude data and nested environment files from Docker contexts.
 - [x] Run contract tests, build locally, start from empty data, and verify browser administrator setup, accounts, work items, public pages, uploads, live connections and container recreation.
 - [x] Document first boot, SMTP limitations, updates, persistence and commands in `deployments/local/README.md`.
-- [ ] Review and commit the verified changes, push the working branch to GitHub, pull that branch on the server without modifying unrelated files, and rebuild/test there.
+- [x] Review and commit the verified changes, push the working branch to GitHub, pull that branch on the server without modifying unrelated files, and rebuild/test there.
 
 ## Verification
 
