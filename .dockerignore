@@ -67,3 +67,10 @@ temp/
 build/
 node_modules/
 README.md
+
+# Never send runtime state or application dotenv files to production builds.
+data/
+**/.env
+**/.env.*
+output/
+.playwright-cli/

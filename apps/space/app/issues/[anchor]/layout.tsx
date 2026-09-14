@@ -17,6 +17,7 @@ import { IssuesNavbarRoot } from "@/components/issues/navbar";
 import { PageNotFound } from "@/components/ui/not-found";
 import { usePublish, usePublishList } from "@/hooks/store/publish";
 import { useIssueFilter } from "@/hooks/store/use-issue-filter";
+import { getServerApiUrl } from "@/helpers/api-url.server";
 import type { Route } from "./+types/layout";
 
 const DEFAULT_TITLE = "Plane";
@@ -29,7 +30,7 @@ interface IssueMetadata {
 }
 
 // Loader function runs on the server and fetches metadata
-export async function loader({ params }: Route.LoaderArgs) {
+export async function loader({ params, request }: Route.LoaderArgs) {
   const { anchor } = params;
 
   // Validate anchor before using in request (only allow alphanumeric, -, _)
@@ -39,7 +40,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   }
 
   try {
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}/api/public/anchor/${anchor}/meta/`);
+    const response = await fetch(getServerApiUrl(`/api/public/anchor/${anchor}/meta/`, request.url));
 
     if (!response.ok) {
       return { metadata: null };
